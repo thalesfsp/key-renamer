@@ -1,0 +1,9 @@
+.sass-cache
+.tmp
+app/vendor
+coverage
+dist
+node_modules
+.DS_Store
+npm-debug.log
+app/app.yml

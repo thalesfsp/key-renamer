@@ -1,0 +1,26 @@
+{
+  "name": "key-renamer",
+  "version": "1.0.0",
+  "description": "A JS library to deep rename object keys based on a map",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thalesfsp/key-renamer.git"
+  },
+  "keywords": [
+    "object",
+    "key",
+    "renamer",
+    "map",
+    "transform"
+  ],
+  "author": "Thales Pinheiro <thalesfsp@gmail.com>",
+  "license": "CC-BY-SA-4.0",
+  "bugs": {
+    "url": "https://github.com/thalesfsp/key-renamer/issues"
+  },
+  "homepage": "https://github.com/thalesfsp/key-renamer#readme",
+  "dependencies": {
+    "lodash": "^3.9.3"
+  }
+}
