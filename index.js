@@ -8,7 +8,6 @@
  * @see https://github.com/thalesfsp/key-renamer
  * @description A JS library to deep rename object keys based on a map.
  * @requires util
- * @requires lodash
  * @todo Add tests
  * @todo Test cross-OS
  * @todo Improve and refactoring the code
@@ -17,12 +16,34 @@
  */
 
 var util = require('util');
-var lodash = require('lodash');
+
 
 /**
- * Output the renameKeys process
- * @param {String} originalKey the original key
- * @param {String|Object} newKey the new renamed/generated key
+ * Recursively merge properties of two objects
+ * @see http://goo.gl/g4wKju
+ */
+function mergeRecursive(obj1, obj2) {
+  for (var p in obj2) {
+    try {
+      // Property in destination object set; update its value.
+      if (obj2[p].constructor == Object) {
+        obj1[p] = mergeRecursive(obj1[p], obj2[p]);
+      } else {
+        obj1[p] = obj2[p];
+      }
+    } catch (e) {
+      // Property in destination object not set; create it and set its value.
+      obj1[p] = obj2[p];
+    }
+  }
+
+  return obj1;
+}
+
+/**
+ * Output the keyRenamer process
+ * @param {Object} originalKey the original key
+ * @param {Object} newKey  the new renamed/generated key
  * @param {Boolean} value the key value
  */
 var logDebug = function(originalKey, newKey, value) {
@@ -34,16 +55,17 @@ var logDebug = function(originalKey, newKey, value) {
 
   console.log('Key value: ', value);
 
-  // Add vertical space for a beautiful format
+  // Vertical space for a beautiful format
   console.log('');
 };
 
 /**
- * A JS library to deep rename object keys based on a map.
+ * Deep rename the keys of a given object
+ * @todo discover if there's a better way then use `eval`
  * @param {Object} originalObject the original object (source)
  * @param {Object} map an object containing the mapping keys
  * @param {Boolean} debug if true, will output the process
- * @returns {Object} the updated object with the renamed keys
+ * @returns {Object} the object with the rename keys
  */
 var keyRenamer = function(originalObject, map, debug) {
   var updatedObject = {};
@@ -57,7 +79,7 @@ var keyRenamer = function(originalObject, map, debug) {
       colors: true
     }));
 
-    // Add vertical space for a beautiful format
+    // Vertical space for a beautiful format
     console.log('');
 
     console.log('Map object:', util.inspect(map, {
@@ -69,18 +91,26 @@ var keyRenamer = function(originalObject, map, debug) {
   }
 
   Object.keys(originalObject).forEach(function(key) { // jshint ignore:line
-    // Temporary variable
+    // Buffer
     var tempKey = {};
 
     // Get the destination key
     newKey = map[key] || key;
 
-    // Check if the value should be an object
-    if (newKey.indexOf(':') !== -1) {
-      // Store the value
+    // Check if the newKey is a template
+    if (newKey.indexOf(':') !== -1 && newKey.indexOf('$value') !== -1) {
+      // Get the value
       value = originalObject[key];
 
-      // Apply the value to the new key
+      // Deal with type evaluation
+      if (value) {
+        if (value.constructor.name !== 'Number' &&
+          value.constructor.name !== 'Boolean') {
+          value = JSON.stringify(value);
+        }
+      }
+
+      // Update the value
       newKey = newKey.replace('$value', value);
 
       // Danger, but here is a case to use
@@ -88,8 +118,10 @@ var keyRenamer = function(originalObject, map, debug) {
       eval('var tempKey = ' + newKey); // jshint ignore:line
 
       // If this is an object, recurse
-      if (typeof value === 'object') {
-        value = keyRenamer(value, map);
+      if (value) {
+        if (value.constructor.name === 'Object') {
+          value = keyRenamer(value, map);
+        }
       }
 
       if (debug) {
@@ -97,9 +129,10 @@ var keyRenamer = function(originalObject, map, debug) {
       }
 
       // Merge it
-      lodash.merge(updatedObject, tempKey);
+      // lodash.merge(updatedObject, tempKey);
+      mergeRecursive(updatedObject, tempKey);
     } else {
-      // Store the value
+      // Get the value
       value = originalObject[key];
 
       if (debug) {
@@ -107,11 +140,13 @@ var keyRenamer = function(originalObject, map, debug) {
       }
 
       // If this is an object, recurse
-      if (typeof value === 'object') {
-        value = keyRenamer(value, map);
+      if (value) {
+        if (value.constructor.name === 'Object') {
+          value = keyRenamer(value, map);
+        }
       }
 
-      // Update the key name
+      // Set it on the result using the destination key
       updatedObject[newKey] = value;
     }
   });
