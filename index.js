@@ -22,11 +22,11 @@ var util = require('util');
  * Recursively merge properties of two objects
  * @see http://goo.gl/g4wKju
  */
-function mergeRecursive(obj1, obj2) {
-  for (var p in obj2) {
+var mergeRecursive = function(obj1, obj2) {
+  for (var p in obj2) { // jshint ignore:line
     try {
       // Property in destination object set; update its value.
-      if (obj2[p].constructor == Object) {
+      if (obj2[p].constructor === Object) {
         obj1[p] = mergeRecursive(obj1[p], obj2[p]);
       } else {
         obj1[p] = obj2[p];
@@ -38,7 +38,7 @@ function mergeRecursive(obj1, obj2) {
   }
 
   return obj1;
-}
+};
 
 /**
  * Output the keyRenamer process
