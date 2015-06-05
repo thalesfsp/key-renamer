@@ -20,7 +20,5 @@
     "url": "https://github.com/thalesfsp/key-renamer/issues"
   },
   "homepage": "https://github.com/thalesfsp/key-renamer#readme",
-  "dependencies": {
-    "lodash": "^3.9.3"
-  }
+  "dependencies": {}
 }
