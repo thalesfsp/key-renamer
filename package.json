@@ -1,6 +1,6 @@
 {
   "name": "key-renamer",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A JS library to deep rename object keys based on a map",
   "main": "index.js",
   "repository": {
