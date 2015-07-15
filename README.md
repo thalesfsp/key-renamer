@@ -50,12 +50,8 @@ var updatedObject = {
 };
 ```
 
-Want to help?
+Installation:
 
-- Add tests
-- Test cross-OS
-- Improve and refactoring the code
-- Add JSPerf
-- Add quality of the code
+`npm install key-renamer`
 
-_Note: Don't stolen code, improve it! You are welcome!_
+More to come, PR are welcome!
