@@ -1,0 +1,20 @@
+# Directories
+node_modules
+lib
+
+# OS Files
+.DS_Store
+
+# Git Files
+.gitattributes
+.gitignore
+
+# NPM Files
+.npmignore
+
+# CI Files
+.gitlab-ci.yml
+
+# Files
+npm-debug.log
+test.js

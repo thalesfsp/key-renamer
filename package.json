@@ -2,7 +2,19 @@
   "name": "key-renamer",
   "version": "1.0.3",
   "description": "A JS library to deep rename object keys based on a map",
-  "main": "index.js",
+  "author": "Thales Pinheiro <thalesfsp@gmail.com>",
+  "license": "CC-BY-SA-4.0",
+  "contributors": [
+    {
+      "name": "thalesfsp",
+      "email": "thalesfsp@gmail.com"
+    }
+  ],
+  "maintainers": "thalesfsp <thalesfsp@gmail.com>",
+  "homepage": "https://github.com/thalesfsp/key-renamer#readme",
+  "bugs": {
+    "url": "https://github.com/thalesfsp/key-renamer/issues"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/thalesfsp/key-renamer.git"
@@ -14,11 +26,19 @@
     "map",
     "transform"
   ],
-  "author": "Thales Pinheiro <thalesfsp@gmail.com>",
-  "license": "CC-BY-SA-4.0",
-  "bugs": {
-    "url": "https://github.com/thalesfsp/key-renamer/issues"
+  "main": "bin/key-renamer.js",
+  "engines": {
+    "node": ">= 0.10.3"
   },
-  "homepage": "https://github.com/thalesfsp/key-renamer#readme",
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "benchmark": "^1.0.0",
+    "lodash": "^3.10.0",
+    "mocha": "^2.2.5"
+  },
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha test.js",
+    "benchmark": "node benchmark.js",
+    "git:push": "git add --all && git commit --signoff && git push"
+  }
 }
