@@ -2,64 +2,113 @@
 
 /**
  * @author Thales Pinheiro
- * @since 06/04/2015
+ * @since 10/07/2011
  * @copyright Thales Pinheiro
- * @see https://github.com/thalesfsp/key-renamer
- * @description A very simple and basic way to test
+ * @requires assert
+ * @requires lodash
  * @requires key-renamer
- * @requires util
+ * Key-renamer basic unit test
  */
 
-var keyRenamer = require('./index');
-var util = require('util');
+var assert = require('assert');
+var lodash = require('lodash');
+var keyRenamer = require('./lib/key-renamer');
+var expectedObject, originalObject, sampleMap;
 
-var metadata = {
-  a: true,
-  b: 'John',
-  c: 10.123,
-  d: 10123,
-  e: undefined,
-  f: null,
-  g: [],
-  h: {},
-  i: 'composite object',
-  j: {
-    l: undefined
-  },
-  m: {
-    a: true,
-    b: 'John',
-    c: 10.123,
-    d: 10123,
-    e: undefined,
-    f: null,
-    g: [],
-    h: {},
-    i: 'composite object',
-    j: {
-      l: undefined
-    }
-  }
-};
+describe('Key-renamer test', function() {
+  before(function() {
+    // Expected result
+    expectedObject = {
+      boolean: true,
+      string: 'John',
+      float: 10.123,
+      number: 10123,
+      undefined: undefined,
+      null: null,
+      array: [],
+      object: {},
+      project: {
+        value: {
+          total: 'composite object'
+        }
+      },
+      compositeObjectWithUndefinedValue: {
+        repository: {
+          url: undefined
+        }
+      },
+      nestedObject: {
+        boolean: true,
+        string: 'John',
+        float: 10.123,
+        number: 10123,
+        undefined: undefined,
+        null: null,
+        array: [],
+        object: {},
+        project: {
+          value: {
+            total: 'composite object'
+          }
+        },
+        compositeObjectWithUndefinedValue: {
+          repository: {
+            url: undefined
+          }
+        }
+      }
+    };
+  });
 
-var map = {
-  a: 'boolean',
-  b: 'string',
-  c: 'float',
-  d: 'number',
-  e: 'undefined',
-  f: 'null',
-  g: 'array',
-  h: 'object',
-  i: '{project: {value: {total: $value}}}',
-  j: 'compositeObjectWithUndefinedValue',
-  l: '{repository: {url: $value}}',
-  m: 'nestedObject'
-};
+  beforeEach(function() {
+    // Sample (original) object
+    originalObject = {
+      a: true,
+      b: 'John',
+      c: 10.123,
+      d: 10123,
+      e: undefined,
+      f: null,
+      g: [],
+      h: {},
+      i: 'composite object',
+      j: {
+        l: undefined
+      },
+      m: {
+        a: true,
+        b: 'John',
+        c: 10.123,
+        d: 10123,
+        e: undefined,
+        f: null,
+        g: [],
+        h: {},
+        i: 'composite object',
+        j: {
+          l: undefined
+        }
+      }
+    };
 
-// @debug
-console.log(util.inspect(keyRenamer(metadata, map, false), {
-  showHidden: true,
-  depth: 3,
-  colors: true
-}));
+    // Sample map
+    sampleMap = {
+      a: 'boolean',
+      b: 'string',
+      c: 'float',
+      d: 'number',
+      e: 'undefined',
+      f: 'null',
+      g: 'array',
+      h: 'object',
+      i: '{project: {value: {total: $value}}}',
+      j: 'compositeObjectWithUndefinedValue',
+      l: '{repository: {url: $value}}',
+      m: 'nestedObject'
+    };
+  });
+
+  it('Should transform originalObject into expectedObject using the sampleMap', function() {
+    assert.equal(lodash.isEqual(keyRenamer(originalObject, sampleMap, false), expectedObject), true);
+  });
+});

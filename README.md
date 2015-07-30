@@ -1,7 +1,27 @@
 # key-renamer
+
+Since: 06/04/2015   
+Author: Thales Pinheiro   
+[![build status](http://ci.audaci.us:8072/projects/4/status.png?ref=master)](http://ci.audaci.us:8072/projects/4?ref=master)
+
+## Abstraction
+
 A JS library to deep rename object keys based on a map.
 
-Given this object:
+## Features
+
+- Deep structure renamer
+- Blazing fast (**~2ms and ~5,737 ops/sec**)!
+- Low footprint (**~1KB**)
+
+## Installation
+
+`npm install key-renamer --save`
+
+## Utilization
+
+
+Given this sample object:
 
 ```javascript
 var metadata = {
@@ -16,7 +36,7 @@ var metadata = {
 };
 ```
 
-and this map object:
+and this sample map object:
 
 ```javascript
 var map = {
@@ -29,7 +49,7 @@ var map = {
 };
 ```
 
-the output object will be:
+the output transformed object will be:
 
 ```javascript
 var updatedObject = {
@@ -50,8 +70,9 @@ var updatedObject = {
 };
 ```
 
-Installation:
+## Benchmark and Tests
 
-`npm install key-renamer`
-
-More to come, PR are welcome!
+1. Clone this repository
+2. `npm install`
+3. To test `npm run test`
+4. To benchmark `npm run benchmark`
