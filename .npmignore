@@ -18,3 +18,4 @@ lib
 # Files
 npm-debug.log
 test.js
+benchmark.js
