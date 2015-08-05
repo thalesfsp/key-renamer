@@ -11,6 +11,9 @@
 .gitattributes export-ignore
 .gitignore export-ignore
 
+# OS files
+.DS_Store export-ignore
+
 # CI files
 .gitlab-ci.yml export-ignore
 
@@ -22,7 +25,9 @@ node_modules export-ignore
 lib export-ignore
 
 # Files
+npm-debug.log export-ignore
 test.js export-ignore
+benchmark.js export-ignore
 
 # For the following file types, normalize line endings to LF on
 # checkin and prevent conversion to CRLF when they are checked out
