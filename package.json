@@ -33,11 +33,12 @@
   "dependencies": {},
   "devDependencies": {
     "benchmark": "^1.0.0",
+    "istanbul": "^0.4.0",
     "lodash": "^3.10.0",
     "mocha": "^2.2.5"
   },
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha test.js",
+    "test": "shell-scripts/test",
     "benchmark": "node benchmark.js",
     "git:push": "git add --all && git commit --signoff && git push",
     "npm:publish": "npm run git:push && npm publish"

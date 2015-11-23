@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for key-renamer/lib/key-renamer.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">key-renamer/lib/</a> key-renamer.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">75% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>36/48</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">75% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>21/28</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">75% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>3/4</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">75% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>36/48</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line medium'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">23×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">23×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">23×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">//jscs:disable requireCapitalizedComments
+/* jshint strict: false */
+&nbsp;
+/**
+ * @author Thales Pinheiro
+ * @since 06/04/2015
+ * @copyright Thales Pinheiro
+ * @see https://github.com/thalesfsp/key-renamer
+ * @description A JS library to deep rename object keys based on a map.
+ * @requires util
+ * @todo Add JSPerf
+ * @todo Add quality of the code
+ */
+&nbsp;
+var util = require('util');
+&nbsp;
+&nbsp;
+/**
+ * Recursively merge properties of two objects
+ * @see http://goo.gl/g4wKju
+ */
+var mergeRecursive = function(obj1, obj2) {
+  for (var p in obj2) { // jshint ignore:line
+    try {
+      // Property in destination object set; update its value.
+      <span class="missing-if-branch" title="else path not taken" >E</span>if (obj2[p].constructor === Object) {
+        obj1[p] = mergeRecursive(obj1[p], obj2[p]);
+      } else {
+<span class="cstat-no" title="statement not covered" >        obj1[p] = obj2[p];</span>
+      }
+    } catch (e) {
+      // Property in destination object not set; create it and set its value.
+      obj1[p] = obj2[p];
+    }
+  }
+&nbsp;
+  return obj1;
+};
+&nbsp;
+/**
+ * Output the keyRenamer process
+ * @param {Object} originalKey the original key
+ * @param {Object} newKey  the new renamed/generated key
+ * @param {Boolean} value the key value
+ */
+var logDebug = <span class="fstat-no" title="function not covered" >function(originalKey, newKey, value) {</span>
+<span class="cstat-no" title="statement not covered" >  console.log('Original key: ', originalKey);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  console.log('New key: ', util.inspect(newKey, {</span>
+    showHidden: true, depth: 3
+  }));
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  console.log('Key value: ', value);</span>
+&nbsp;
+  // Vertical space for a beautiful format
+<span class="cstat-no" title="statement not covered" >  console.log('');</span>
+};
+&nbsp;
+/**
+ * Deep rename the keys of a given object
+ * @todo discover if there's a better way then use `eval`
+ * @param {Object} originalObject the original object (source)
+ * @param {Object} map an object containing the mapping keys
+ * @param {Boolean} debug if true, will output the process
+ * @returns {Object} the object with the rename keys
+ */
+var keyRenamer = function(originalObject, map, debug) {
+  var updatedObject = {};
+  var newKey;
+  var value;
+&nbsp;
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (debug) {
+<span class="cstat-no" title="statement not covered" >    console.log('Original object:', util.inspect(originalObject, {</span>
+      showHidden: true,
+      depth: 10,
+      colors: true
+    }));
+&nbsp;
+    // Vertical space for a beautiful format
+<span class="cstat-no" title="statement not covered" >    console.log('');</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    console.log('Map object:', util.inspect(map, {</span>
+      showHidden: true, depth: 3
+    }));
+&nbsp;
+    // Vertical space for a beautiful format
+<span class="cstat-no" title="statement not covered" >    console.log('');</span>
+  }
+&nbsp;
+  Object.keys(originalObject).forEach(function(key) { // jshint ignore:line
+    // Buffer
+    var tempKey = {};
+&nbsp;
+    // Get the destination key
+    newKey = map[key] || <span class="branch-1 cbranch-no" title="branch not covered" >key;</span>
+&nbsp;
+    // Check if the newKey is a template
+    if (newKey.indexOf(':') !== -1 &amp;&amp; newKey.indexOf('$value') !== -1) {
+      // Get the value
+      value = originalObject[key];
+&nbsp;
+      // Deal with type evaluation
+      if (value) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (value.constructor.name !== 'Number' &amp;&amp;
+          value.constructor.name !== 'Boolean') {
+          value = JSON.stringify(value);
+        }
+      }
+&nbsp;
+      // Update the value
+      newKey = newKey.replace('$value', value);
+&nbsp;
+      // Danger, but here is a case to use
+      // @see http://goo.gl/MQb3sf
+      eval('var tempKey = ' + newKey); // jshint ignore:line
+&nbsp;
+      // If this is an object, recurse
+      if (value) {
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (value.constructor.name === 'Object') {
+<span class="cstat-no" title="statement not covered" >          value = keyRenamer(value, map);</span>
+        }
+      }
+&nbsp;
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (debug) {
+<span class="cstat-no" title="statement not covered" >        logDebug(key, tempKey, value);</span>
+      }
+&nbsp;
+      // Merge it
+      // lodash.merge(updatedObject, tempKey);
+      mergeRecursive(updatedObject, tempKey);
+    } else {
+      // Get the value
+      value = originalObject[key];
+&nbsp;
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (debug) {
+<span class="cstat-no" title="statement not covered" >        logDebug(key, newKey, value);</span>
+      }
+&nbsp;
+      // If this is an object, recurse
+      if (value) {
+        if (value.constructor.name === 'Object') {
+          value = keyRenamer(value, map);
+        }
+      }
+&nbsp;
+      // Set it on the result using the destination key
+      updatedObject[newKey] = value;
+    }
+  });
+&nbsp;
+  return updatedObject;
+};
+&nbsp;
+// Export module
+module.exports = keyRenamer;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Nov 23 2015 12:09:11 GMT-0200 (BRST)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>
