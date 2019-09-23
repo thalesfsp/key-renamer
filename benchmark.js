@@ -10,12 +10,12 @@
  * Key-renamer benchmark
  */
 
-var Benchmark = require('benchmark');
-var suite = new Benchmark.Suite;
-var keyRenamer = require('./lib/key-renamer');
+const Benchmark = require('benchmark');
+const suite = new Benchmark.Suite;
+const keyRenamer = require('./bin/key-renamer');
 
 // Sample (original) object
-var originalObject = {
+const originalObject = {
   a: true,
   b: 'John',
   c: 10.123,
@@ -45,7 +45,7 @@ var originalObject = {
 };
 
 // Sample map
-var sampleMap = {
+const sampleMap = {
   a: 'boolean',
   b: 'string',
   c: 'float',
@@ -61,44 +61,42 @@ var sampleMap = {
 };
 
 // Basic crono
-var timer = function(name) {
-  var start = new Date();
+const timer = function (name) {
+  const start = new Date();
 
   return {
-    stop: function() {
-      var end  = new Date();
-      var time = end.getTime() - start.getTime();
+    stop: function () {
+      const end = new Date();
+      const time = end.getTime() - start.getTime();
       console.log(name, time, 'ms');
     }
   };
 };
 
 // Speed test (in ms)
-var t = timer('Benchmark #0 (in ms)');
+const t = timer('Benchmark #0 (in ms)');
 keyRenamer(originalObject, sampleMap, false);
 t.stop();
 
 // Speed test (in ops/sec)
-var suite = new Benchmark.Suite;
-
 // Run 5 benchmark tests
-suite.add('Benchmark #1 (in ops/sec)', function() {
-  keyRenamer(originalObject, sampleMap, false);
-})
-.add('Benchmark #2 (in ops/sec)', function() {
-  keyRenamer(originalObject, sampleMap, false);
-})
-.add('Benchmark #3 (in ops/sec)', function() {
-  keyRenamer(originalObject, sampleMap, false);
-})
-.add('Benchmark #4 (in ops/sec)', function() {
-  keyRenamer(originalObject, sampleMap, false);
-})
-.add('Benchmark #5 (in ops/sec)', function() {
-  keyRenamer(originalObject, sampleMap, false);
-})
-.on('cycle', function(event) {
-  console.log(String(event.target));
-})
-// run async
-.run();
+suite.add('Benchmark #1 (in ops/sec)', function () {
+    keyRenamer(originalObject, sampleMap, false);
+  })
+  .add('Benchmark #2 (in ops/sec)', function () {
+    keyRenamer(originalObject, sampleMap, false);
+  })
+  .add('Benchmark #3 (in ops/sec)', function () {
+    keyRenamer(originalObject, sampleMap, false);
+  })
+  .add('Benchmark #4 (in ops/sec)', function () {
+    keyRenamer(originalObject, sampleMap, false);
+  })
+  .add('Benchmark #5 (in ops/sec)', function () {
+    keyRenamer(originalObject, sampleMap, false);
+  })
+  .on('cycle', function (event) {
+    console.log(String(event.target));
+  })
+  // run async
+  .run();
