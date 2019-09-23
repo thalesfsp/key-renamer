@@ -1,13 +1,15 @@
 {
   "name": "key-renamer",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A JS library to deep rename object keys based on a map",
   "author": "Thales Pinheiro <thalesfsp@gmail.com>",
   "license": "MIT",
-  "contributors": [{
-    "name": "thalesfsp",
-    "email": "thalesfsp@gmail.com"
-  }],
+  "contributors": [
+    {
+      "name": "thalesfsp",
+      "email": "thalesfsp@gmail.com"
+    }
+  ],
   "maintainers": [
     "thalesfsp <thalesfsp@gmail.com>"
   ],
