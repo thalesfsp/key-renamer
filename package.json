@@ -4,12 +4,10 @@
   "description": "A JS library to deep rename object keys based on a map",
   "author": "Thales Pinheiro <thalesfsp@gmail.com>",
   "license": "MIT",
-  "contributors": [
-    {
-      "name": "thalesfsp",
-      "email": "thalesfsp@gmail.com"
-    }
-  ],
+  "contributors": [{
+    "name": "thalesfsp",
+    "email": "thalesfsp@gmail.com"
+  }],
   "maintainers": [
     "thalesfsp <thalesfsp@gmail.com>"
   ],
@@ -32,16 +30,16 @@
   "engines": {
     "node": ">= 0.10.3"
   },
-  "dependencies": {},
   "devDependencies": {
     "benchmark": "^1.0.0",
     "lodash": "^4.17.15",
-    "mocha": "^6.2.0"
+    "mocha": "^6.2.0",
+    "nyc": "^14.1.1",
+    "terser": "^4.3.1"
   },
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha test.js",
-    "benchmark": "node benchmark.js",
-    "git:push": "git add --all && git commit --signoff && git push",
-    "npm:publish": "npm run git:push && npm publish"
+    "build": "terser --compress --mangle --output bin/key-renamer.js lib/key-renamer.js",
+    "test": "npm run build && nyc --clean mocha test.js",
+    "benchmark": "npm run build && node benchmark.js"
   }
 }
