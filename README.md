@@ -3,7 +3,7 @@
 Since: 06/04/2015
 Author: Thales Pinheiro
 
-## Abstraction
+## Overview
 
 A JS library to deep rename object keys based on a map.
 
@@ -17,13 +17,12 @@ A JS library to deep rename object keys based on a map.
 
 `npm install key-renamer --save`
 
-## Utilization
-
+## Usage
 
 Given this sample object:
 
 ```javascript
-var metadata = {
+const data = {
   a: 1,
   b: 'John',
   c: 34,
@@ -38,7 +37,7 @@ var metadata = {
 and this sample map object:
 
 ```javascript
-var map = {
+const map = {
   a: 'id',
   b: 'name',
   c: 'age',
@@ -48,10 +47,17 @@ var map = {
 };
 ```
 
-the output transformed object will be:
+running:
 
 ```javascript
-var updatedObject = {
+const keyRenamer = require("key-renamer");
+console.log(keyRenamer(data, map));
+```
+
+the output transformed object should be:
+
+```javascript
+const updatedObject = {
   id: 1,
   name: 'John',
   age: 34,
