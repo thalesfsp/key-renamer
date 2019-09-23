@@ -7,16 +7,17 @@
  * @requires assert
  * @requires lodash
  * @requires key-renamer
+ * 
  * Key-renamer basic unit test
  */
 
-var assert = require('assert');
-var lodash = require('lodash');
-var keyRenamer = require('./lib/key-renamer');
-var expectedObject, originalObject, sampleMap;
+const assert = require('assert');
+const lodash = require('lodash');
+const keyRenamer = require('./bin/key-renamer');
+let expectedObject, originalObject, sampleMap;
 
-describe('Key-renamer test', function() {
-  before(function() {
+describe('Key-renamer test', function () {
+  before(function () {
     // Expected result
     expectedObject = {
       boolean: true,
@@ -60,7 +61,7 @@ describe('Key-renamer test', function() {
     };
   });
 
-  beforeEach(function() {
+  beforeEach(function () {
     // Sample (original) object
     originalObject = {
       a: true,
@@ -108,7 +109,7 @@ describe('Key-renamer test', function() {
     };
   });
 
-  it('Should transform originalObject into expectedObject using the sampleMap', function() {
+  it('Should transform originalObject into expectedObject using the sampleMap', function () {
     assert.equal(lodash.isEqual(keyRenamer(originalObject, sampleMap, false), expectedObject), true);
   });
 });
