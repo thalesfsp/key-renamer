@@ -1,4 +1,4 @@
-![ci](https://github.com/thalesfsp/key-renamer/workflows/Node%20CI/badge.svg) [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) ![npm](https://img.shields.io/npm/v/key-renamer) ![coverage](https://img.shields.io/badge/coverage-89.47%25-blue)
+![ci](https://github.com/thalesfsp/key-renamer/workflows/Node%20CI/badge.svg) [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) ![npm](https://img.shields.io/npm/v/key-renamer) ![coverage](https://img.shields.io/badge/coverage-89.47%25-blue) [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=thalesfsp_key-renamer&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=thalesfsp_key-renamer)
 
 # key-renamer
 
